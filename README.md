@@ -1,4 +1,4 @@
-# Vue-Fortune-Wheel
+# Vue-Transition-Router
 
 ## Install
 
@@ -10,6 +10,7 @@ or
 
 ````
 npm install vue-transition-router
+````
 
 ## Demo
 
