@@ -12,31 +12,15 @@
     "vue-router-transition"
   ],
   "description": "A page transition plugin for vue-router",
-  "main": "src/router/router-transition.js",
+  "main": "dist/transition.min.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "animate.css": "^4.1.1",
-    "core-js": "^3.6.5",
-    "vant": "^2.12.34",
-    "vue": "^2.6.11",
-    "vue-router": "^3.5.3",
-    "vueg": "^1.4.5"
+    "build": "webpack"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-import": "^1.13.3",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "sass": "^1.26.5",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-loader": "^8.2.3",
+    "webpack": "^5.64.3",
+    "webpack-cli": "^4.9.1"
   }
 }
