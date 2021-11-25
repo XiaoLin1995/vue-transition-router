@@ -18,28 +18,6 @@ npm install vue-transition-router
 
 ## Usage
 
-```html
-// main router
-<template>
-    <div>
-        <transition :name="$router.transition.name">
-            <router-view class="router-view"> </router-view>
-        </transition>
-    </div>
-</template>
-````
-
-```html
-// children router
-<template>
-    <div>
-        <transition-group :name="$router.transition.name">
-            <router-view class="router-view" key="1"> </router-view>
-        </transition>
-    </div>
-</template>
-```
-
 ```js
 // router.js
 import Vue from "vue";
@@ -51,7 +29,7 @@ const routes = [
     path: "/",
     name: "Home",
     meta: {
-      transition: "", // Empty string can cancel the transition
+      transition: "", // Empty string can cancel the transition. If not set, it will be the default value
     },
     component: () => import("../views/home.vue"),
   },
@@ -79,7 +57,84 @@ const routes = [
     component: () => import("../views/page3.vue"),
   },
 ];
+
+let router = new VueRouter({
+  mode: "hash",
+  base: process.env.BASE_URL,
+  routes,
+});
+
+export default transitionRouter(router, {
+  forwardName: "slide-left",
+  backName: "slide-right"
+});
 ```
+
+```css
+.slide-right-enter-active,
+.slide-left-enter-active,
+.slide-right-leave-active,
+.slide-left-leave-active {
+  box-shadow: -20px 0 20px 0px rgba(0, 0, 0, 0.1);
+  will-change: transform;
+  transition: all 0.3s ease-out;
+}
+
+.slide-left-enter-active {
+  transform: translateX(100%);
+}
+.slide-left-enter-to {
+  transform: translateX(0);
+}
+.slide-right-enter-active {
+  transform: translateX(-100%);
+}
+.slide-right-enter-to {
+  transform: translateX(0);
+}
+.slide-right-enter-from {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+.slide-right-leave-to {
+  z-index: 100;
+  transform: translateX(100%);
+}
+.slide-right-leave-from {
+  box-shadow: -20px 0 20px 0px rgba(0, 0, 0, 0.1);
+}
+.slide-left-enter-from {
+  z-index: 100;
+  transform: translateX(100%);
+  box-shadow: -20px 0 20px 0px rgba(0, 0, 0, 0.1);
+}
+.slide-left-leave-to {
+  opacity: 0.4;
+  transform: translateX(-50%);
+}
+```
+
+```html
+// main router
+<template>
+    <div>
+        <transition :name="$router.transition.name">
+            <router-view class="router-view"> </router-view>
+        </transition>
+    </div>
+</template>
+```
+
+```html
+// children router, There may be bugs with transtion
+<template>
+    <div>
+        <transition-group :name="$router.transition.name">
+            <router-view class="router-view" key="1"> </router-view>
+        </transition>
+    </div>
+</template>
+````
 
 ```html
 <template>

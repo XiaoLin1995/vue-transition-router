@@ -1,7 +1,6 @@
 {
   "name": "vue-transition-router",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.0.1",
   "author": "Xiaolin Zhu",
   "license": "MIT",
   "bugs": {

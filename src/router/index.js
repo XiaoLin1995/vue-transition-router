@@ -41,9 +41,4 @@ let router = new VueRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  /* 必须调用 `next` */
-  next();
-});
-
 export default transitionRouter(router);
